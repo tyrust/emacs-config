@@ -1,6 +1,0 @@
-;; disable trailing whitespace indicator ('_' by default)
-(setq cperl-invalid-face nil) 
-;; expands for keywords such as foreach, while, etc...
-(setq cperl-electric-keywords t) 
-
- 
