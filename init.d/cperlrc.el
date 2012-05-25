@@ -4,4 +4,5 @@
 (setq cperl-electric-keywords t) 
 ;; honestly forgot what this does
 (setq cperl-indent-parens-as-block t)
- 
+;; indent
+(setq cperl-indent-level 4) 
