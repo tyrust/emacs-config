@@ -15,6 +15,11 @@
       (load file)))(if (file-exists-p abg-init-dir)
     (dolist (file (directory-files abg-init-dir t "\\.el$"))
       (load file)))
+
+;; Load all packages in ./packages.d
+(let ((default-directory (format "%s%s" abg-emacs-config-dir "packages.d")))
+  (normal-top-level-add-subdirs-to-load-path))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

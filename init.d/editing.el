@@ -124,3 +124,6 @@ File suffix is used to determine what program to run."
           "#"))
     (expand-file-name
      (concat "#%" (buffer-name) "#"))))
+
+(add-hook 'shell-mode-hook
+	  'ansi-color-for-comint-mode-on)
