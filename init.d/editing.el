@@ -125,5 +125,23 @@ File suffix is used to determine what program to run."
     (expand-file-name
      (concat "#%" (buffer-name) "#"))))
 
+;; Fix what shell colors breaks
 (add-hook 'shell-mode-hook
 	  'ansi-color-for-comint-mode-on)
+
+;; More descriptive buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
+;; Desktop setup
+(require 'desktop)
+(desktop-save-mode 1)
+(defun my-desktop-save ()
+  (interactive)
+  ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
+  (if (eq (desktop-owner) (emacs-pid))
+      (desktop-save desktop-dirname)))
+(add-hook 'auto-save-hook 'my-desktop-save)
+(setq desktop-path '("~/.emacs.d/"))
+(setq desktop-dirname "~/.emacs.d/")
+(setq desktop-base-file-name "emacs-desktop")
