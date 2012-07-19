@@ -125,6 +125,19 @@ File suffix is used to determine what program to run."
     (expand-file-name
      (concat "#%" (buffer-name) "#"))))
 
+;; have grep ignore .svn
+(grep-compute-defaults)
+(grep-apply-setting 'grep-command "grep --exclude=\\*.svn\\* -nH -e ")
+(setq find-command "find . -type f")
+(setq temp (concat find-command
+				   " -exec "
+				   grep-command
+				   " {} /dev/null \\;"))
+(grep-apply-setting 'grep-find-command (cons temp (+ 1 (length (concat find-command
+																	   " -exec "
+																	   grep-command)))))
+(makunbound 'temp)
+
 ;; Fix what shell colors breaks
 (add-hook 'shell-mode-hook
 	  'ansi-color-for-comint-mode-on)
