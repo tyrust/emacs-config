@@ -1,7 +1,10 @@
 ;; prefer text mode to fundamental mode
 (setq-default major-mode 'text-mode)
-;; turn on autofill
+
+;; general setup
 (setq auto-fill-mode 1)
+(next-screen-context-lines 10)
+(tab-width 4)
 
 ;; display line and col number of insertion point
 (setq line-number-mode t)
@@ -20,24 +23,6 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-;;; cperl-mode is preferred to perl-mode                                        
-;;; "Brevity is the soul of wit" <foo at acm.org>  
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-;; treat parens as block
-(custom-set-variables
-     '(cperl-indent-parens-as-block t))
-;; keybindings
-(defun custom-cperl-bindings ()
-  ;; indent on RET
-  (define-key cperl-mode-map [return] 'reindent-then-newline-and-indent)
-  ;; comment region
-  (define-key cperl-mode-map "\C-c\C-c" 'comment-region)
-)
-(add-hook 'cperl-mode-hook 'custom-cperl-bindings)
 
 ;; run current file, bind to <f8>
 (defun run-current-file ()
@@ -158,3 +143,6 @@ File suffix is used to determine what program to run."
 (setq desktop-path '("~/.emacs.d/"))
 (setq desktop-dirname "~/.emacs.d/")
 (setq desktop-base-file-name "emacs-desktop")
+
+;; inhibit start up
+(inhibit-startup-screen t)
