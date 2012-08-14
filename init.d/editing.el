@@ -3,8 +3,8 @@
 
 ;; general setup
 (setq auto-fill-mode 1)
-(next-screen-context-lines 10)
-(tab-width 4)
+(setq next-screen-context-lines 10)
+(setq tab-width 4)
 
 ;; display line and col number of insertion point
 (setq line-number-mode t)
@@ -145,4 +145,4 @@ File suffix is used to determine what program to run."
 (setq desktop-base-file-name "emacs-desktop")
 
 ;; inhibit start up
-(inhibit-startup-screen t)
+(setq inhibit-startup-screen t)
