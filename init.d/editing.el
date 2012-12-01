@@ -2,6 +2,10 @@
 (setq-default major-mode 'text-mode)
 ;; turn on autofill
 (setq auto-fill-mode 1)
+;; tab width
+(setq tab-width 4)
+(setq-default c-basic-offset 4)
+(setq-default indent-tabs-mode nil)
 
 ;; display line and col number of insertion point
 (setq line-number-mode t)
