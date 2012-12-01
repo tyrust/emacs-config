@@ -15,13 +15,17 @@
       (load file)))(if (file-exists-p abg-init-dir)
     (dolist (file (directory-files abg-init-dir t "\\.el$"))
       (load file)))
+
+;; Load all packages in ./packages.d
+(let ((default-directory (format "%s%s" abg-emacs-config-dir "packages.d")))
+  (normal-top-level-add-subdirs-to-load-path))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cperl-indent-parens-as-block t t)
- '(inhibit-startup-screen t))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

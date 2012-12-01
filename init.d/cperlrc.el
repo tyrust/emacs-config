@@ -22,4 +22,8 @@
 (setq cperl-electric-keywords t) 
 ;; honestly forgot what this does
 (setq cperl-indent-parens-as-block t)
- 
+;; indent
+(setq cperl-indent-level 4) 
+;; colors
+(custom-set-faces
+ '(cperl-hash-face ((((class color) (background dark)) (:background "blue" :foreground "white" :slant italic :weight bold)))))

@@ -1,11 +1,13 @@
 ;; prefer text mode to fundamental mode
 (setq-default major-mode 'text-mode)
-;; turn on autofill
+
+;; general setup
 (setq auto-fill-mode 1)
 ;; tab width
 (setq tab-width 4)
 (setq-default c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
+(setq next-screen-context-lines 10)
 
 ;; display line and col number of insertion point
 (setq line-number-mode t)
@@ -24,24 +26,6 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-;;; cperl-mode is preferred to perl-mode                                        
-;;; "Brevity is the soul of wit" <foo at acm.org>  
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-;; treat parens as block
-(custom-set-variables
-     '(cperl-indent-parens-as-block t))
-;; keybindings
-(defun custom-cperl-bindings ()
-  ;; indent on RET
-  (define-key cperl-mode-map [return] 'reindent-then-newline-and-indent)
-  ;; comment region
-  (define-key cperl-mode-map "\C-c\C-c" 'comment-region)
-)
-(add-hook 'cperl-mode-hook 'custom-cperl-bindings)
 
 ;; run current file, bind to <f8>
 (defun run-current-file ()
@@ -128,3 +112,40 @@ File suffix is used to determine what program to run."
           "#"))
     (expand-file-name
      (concat "#%" (buffer-name) "#"))))
+
+;; have grep ignore .svn
+(grep-compute-defaults)
+(grep-apply-setting 'grep-command "grep --exclude=\\*.svn\\* -nH -e ")
+(setq find-command "find . -type f")
+(setq temp (concat find-command
+				   " -exec "
+				   grep-command
+				   " {} /dev/null \\;"))
+(grep-apply-setting 'grep-find-command (cons temp (+ 1 (length (concat find-command
+																	   " -exec "
+																	   grep-command)))))
+(makunbound 'temp)
+
+;; Fix what shell colors breaks
+(add-hook 'shell-mode-hook
+	  'ansi-color-for-comint-mode-on)
+
+;; More descriptive buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
+;; Desktop setup
+(require 'desktop)
+(desktop-save-mode 1)
+(defun my-desktop-save ()
+  (interactive)
+  ;; Don't call desktop-save-in-desktop-dir, as it prints a message.
+  (if (eq (desktop-owner) (emacs-pid))
+      (desktop-save desktop-dirname)))
+(add-hook 'auto-save-hook 'my-desktop-save)
+(setq desktop-path '("~/.emacs.d/"))
+(setq desktop-dirname "~/.emacs.d/")
+(setq desktop-base-file-name "emacs-desktop")
+
+;; inhibit start up
+(setq inhibit-startup-screen t)
