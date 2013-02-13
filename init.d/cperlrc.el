@@ -21,7 +21,7 @@
 ;; expands for keywords such as foreach, while, etc...
 (setq cperl-electric-keywords t) 
 ;; honestly forgot what this does
-(setq cperl-indent-parens-as-block t)
+(setq cperl-indent-parens-as-block t t)
 ;; indent
 (setq cperl-indent-level 4) 
 ;; colors
