@@ -1,0 +1,10 @@
+*.orig
+*.rej
+*~
+.svn
+*.elc
+.git
+.emacs-semanticdb/
+.recentf
+.emacs-desktop
+.emacs.desktop.lock
