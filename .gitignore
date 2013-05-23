@@ -11,3 +11,5 @@
 eproject.lst
 ac-comphist.dat
 elpa/
+/emacs-desktop
+/tramp
