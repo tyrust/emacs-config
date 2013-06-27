@@ -1,0 +1,39 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Thu Jun 27 09:27:33 2013
+;; Desktop file format version 206
+;; Emacs version 23.1.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/tmp/mutt-hal-1449-11048-10"
+  "mutt-hal-1449-11048-10"
+  'message-mode
+  '(auto-fill-mode abbrev-mode yas/minor-mode mml-mode)
+  4
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (fill-column . 72)))
+
+(desktop-create-buffer 206
+  "/home/ttenneson/hours/2013-07.txt"
+  "2013-07.txt"
+  'text-mode
+  '(yas/minor-mode)
+  905
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+

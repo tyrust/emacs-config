@@ -143,9 +143,9 @@ File suffix is used to determine what program to run."
   (if (eq (desktop-owner) (emacs-pid))
       (desktop-save desktop-dirname)))
 (add-hook 'auto-save-hook 'my-desktop-save)
-(setq desktop-path '("~/.emacs.d/"))
-(setq desktop-dirname "~/.emacs.d/")
-(setq desktop-base-file-name ".emacs-desktop")
+(setq desktop-path '("~/.emacs.d/desktops"))
+(setq desktop-dirname "~/.emacs.d/desktops")
+(setq desktop-base-file-name system-name)
 
 ;; inhibit start up
 (setq inhibit-startup-screen t)
